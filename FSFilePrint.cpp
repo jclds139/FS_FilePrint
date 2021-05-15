@@ -27,6 +27,11 @@ void FSFilePrint::open() {
 
 void FSFilePrint::close() {
 	if (file) {
+		if (nextWritePos) { //flush buffer when closing the logger
+			buf[nextWritePos] = '\0';
+			file.print(buf);
+			nextWritePos = 0;
+		}
 		file.close();
 	}
 }
