@@ -6,13 +6,13 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-SpiffsFilePrint	KEYWORD1
+FSFilePrint	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-SpiffsFilePrint	KEYWORD2
+FSFilePrint	KEYWORD2
 open	KEYWORD2
 close	KEYWORD2
 write	KEYWORD2

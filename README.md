@@ -1,25 +1,28 @@
-# Arduino SPIFFS FilePrint Library #
-https://github.com/PRosenb/SPIFFS_FilePrint
+# Arduino FS FilePrint Library #
+<https://github.com/jclds139/FS_FilePrint>
 
-SPIFFS FilePrint is a lightweight, simple library for rolling file print to log to SPIFFS.  
+FS FilePrint is a lightweight, simple library for rolling file print to log to any FS object.  
 
 ## Features ##
 - Easy to use
 - Supports rolling files
 - Lightweight
+- Buffers writes to reduce flash wear, writing on newlines or full buffers
 
 ## Installation ##
-  - [Download the latest version](https://github.com/PRosenb/SPIFFS_FilePrint/releases/latest)
+### Manual ###
+  - [Download the latest version](https://github.com/jclds139/FS_FilePrint/)
   - Uncompress the downloaded file
-  - This will result in a folder containing all the files for the library. The folder name includes the version: **SPIFFS_FilePrint-x.y.z**
-  - Rename the folder to **SPIFFS_FilePrint**
+  - This will result in a folder containing all the files for the library. The folder name includes the version: **FS_FilePrint-x.y.z**
+  - Rename the folder to **FS_FilePrint**
   - Copy the renamed folder to your **libraries** folder
-  - From time to time, check on https://github.com/PRosenb/SPIFFS_FilePrint if updates become available
+  - From time to time, check on <https://github.com/jclds139/FS_FilePrint> if updates become available
 
 ## Getting Started ##
 Simple Logger:
 ```c++
-#include <SpiffsFilePrint.h>
+#include <FSFilePrint.h>
+#include <FS.h>
 
 void setup() {
     Serial.begin(115200);
@@ -30,7 +33,7 @@ void setup() {
     }
     // SPIFFS.format();
 
-    SpiffsFilePrint filePrint("/logfile", 2, 500, &Serial);
+    FSFilePrint filePrint(SPIFFS ,"/logfile", 2, 500, &Serial);
     filePrint.open();
 
     filePrint.print("Millis since start: ");
@@ -43,21 +46,16 @@ void loop() {
 }
 ```
 
-## Examples ##
-The following example sketches are included in the **PIFFS FilePrint** library.  
-You can also see them in the [Arduino Software (IDE)](https://www.arduino.cc/en/Main/Software) in menu File->Examples->SPIFFS FilePrint.  
-
-- [**Simple Logging**](https://github.com/PRosenb/SPIFFS_FilePrint/blob/master/examples/LogWithArduinoLog/LogWithArduinoLog.ino): Simple example how to use this library.  
-- [**Print to file and console**](https://github.com/PRosenb/SPIFFS_FilePrint/blob/master/examples/PrintFileToConsole/PrintFileToConsole.ino): Print to the console and to a file at the same time and show the content of the logfile.   
-- [**Log with ArduinoLog**](https://github.com/PRosenb/SPIFFS_FilePrint/blob/master/examples/LogWithArduinoLog/LogWithArduinoLog.ino): Use ArduinoLog and configure it to log to a log file. Show the content of the logfile afterwards.  
-
 ## Contributions ##
-Enhancements and improvements are welcome.
+Enhancements and improvements are welcome to this or the original [SPIFFS FilePrint Library](https://github.com/PRosenb/SPIFFS_FilePrint).
 
 ## License ##
 ```
-Arduino PIFFS FilePrint Library
+Arduino FS FilePrint Library
+Copyright (c) 2021 Jesse R Codling (https://github.com/jclds139).
+Forked from Arduino SPIFFS FilePrint Library
 Copyright (c) 2019 Peter Rosenberg (https://github.com/PRosenb).
+
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
